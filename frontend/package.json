@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.2.4",
     "@huggingface/inference": "^2.8.0",
     "framer-motion": "^11.3.19",
     "html2canvas": "^1.4.1",
@@ -33,6 +34,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "postcss": "^8.4.39",
+    "react-error-overlay": "^6.0.11",
     "tailwindcss": "^3.4.4",
     "vite": "^5.3.1"
   }
