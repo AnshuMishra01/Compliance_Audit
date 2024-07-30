@@ -73,7 +73,7 @@ function EmployeeDashboard() {
         </div>
 
         <div className="flex justify-between items-center mt-20 mb-8">
-          <div className="hero-container relative h-96 w-1/3 flex items-center justify-center" style={{ perspective: '1000px' }}>
+          <div className="hero-container relative h-96 w-1/3 mt-10 flex items-center justify-center" style={{ perspective: '1000px' }}>
             {cards.map((card, index) => (
               <motion.div
                 key={card.id}

@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { logout, getUserType } from "../utils/auth";
+import { getUserType } from "../utils/auth";
 import logo from "../assets/Bank_of_Baroda_logo_orange_background.png";
 import "../index.css";
 import { useAuth0 } from "@auth0/auth0-react";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navigation = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const userType = getUserType();
   const { logout, user, isAuthenticated } = useAuth0();
 
   const handleLogout = () => {
     logout({ returnTo: window.location.origin });
+  };
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -24,7 +30,12 @@ const Navigation = () => {
               {userType === "officer" ? "OFFICER PORTAL" : "EMPLOYEE PORTAL"}
             </div>
           </div>
-          <div className="flex items-center space-x-6">
+          <div className="md:hidden">
+            <button onClick={toggleMenu} className="text-2xl focus:outline-none">
+              {isOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
+          <div className={`flex-col md:flex md:flex-row items-center md:space-x-6 space-y-6 md:space-y-0 mt-4 md:mt-0 ${isOpen ? "flex" : "hidden"}`}>
             {userType === "officer" ? (
               <>
                 <Link to="/officer/dashboard" className="neon-hover font-sans">
