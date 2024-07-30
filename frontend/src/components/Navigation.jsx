@@ -1,16 +1,17 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { logout, getUserType } from '../utils/auth';
-import logo from '../assets/Bank_of_Baroda_logo_orange_background.png';
-import '../index.css'; 
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { logout, getUserType } from "../utils/auth";
+import logo from "../assets/Bank_of_Baroda_logo_orange_background.png";
+import "../index.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navigation = () => {
   const navigate = useNavigate();
   const userType = getUserType();
+  const { logout, user, isAuthenticated } = useAuth0();
 
   const handleLogout = () => {
-    logout();
-    navigate('/login');
+    logout({ returnTo: window.location.origin });
   };
 
   return (
@@ -20,21 +21,35 @@ const Navigation = () => {
           <div className="flex items-center space-x-4">
             {/* <img className="w-16 md:w-20 lg:w-24" src={logo} alt="Bank of Baroda Logo" /> */}
             <div className="text-xl font-sans md:text-2xl font-nunito font-bold tracking-wider text-neon-blue">
-              {userType === 'officer' ? 'OFFICER PORTAL' : 'EMPLOYEE PORTAL'}
+              {userType === "officer" ? "OFFICER PORTAL" : "EMPLOYEE PORTAL"}
             </div>
           </div>
           <div className="flex items-center space-x-6">
-            {userType === 'officer' ? (
+            {userType === "officer" ? (
               <>
-                <Link to="/officer/dashboard" className="neon-hover font-sans">Dashboard</Link>
-                <Link to="/officer/guidelines" className="neon-hover">Guidelines</Link>
-                <Link to="/officer/help" className="neon-hover">Help</Link>
+                <Link to="/officer/dashboard" className="neon-hover font-sans">
+                  Dashboard
+                </Link>
+                <Link to="/officer/guidelines" className="neon-hover">
+                  Guidelines
+                </Link>
+                <Link to="/officer/help" className="neon-hover">
+                  Help
+                </Link>
+                {isAuthenticated && <p>{user.email}</p>}
               </>
             ) : (
               <>
-                <Link to="/employee/dashboard" className="neon-hover">Dashboard</Link>
-                <Link to="/employee/guidelines" className="neon-hover">Guidelines</Link>
-                <Link to="/employee/help" className="neon-hover">Help</Link>
+                <Link to="/employee/dashboard" className="neon-hover">
+                  Dashboard
+                </Link>
+                <Link to="/employee/guidelines" className="neon-hover">
+                  Guidelines
+                </Link>
+                <Link to="/employee/help" className="neon-hover">
+                  Help
+                </Link>
+                {isAuthenticated && <p>{user.email}</p>}
               </>
             )}
             <button
