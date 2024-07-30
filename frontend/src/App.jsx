@@ -16,13 +16,17 @@ import EmployeeHelp from "./pages/Employee/Help";
 import Report from "./pages/Officer/Report";
 import PrevReport from "./pages/Officer/PrevReport";
 import FloatingChatbot from "./components/chatbot";
+import { useAuth0 } from "@auth0/auth0-react";
+
+
 
 function App() {
+  const { isAuthenticated } = useAuth0();
   return (
     <div>
       <FloatingChatbot />
       <Router>
-        <Navigation />
+      {isAuthenticated && <Navigation />}
         <Routes>
           <Route path="/login" element={<Login />} />
 
