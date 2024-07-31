@@ -1,0 +1,67 @@
+[
+  {
+    "$kpi": "NIM",
+    "$calculated_val": "3.4443441015003198",
+    "$benchmark": "3.5",
+    "$comparison": "Bad",
+    "$difference": "0.05565589849968022",
+    "id": "6747f700-1958-48c7-a44b-b4ce4ccc83d8",
+    "_rid": "DJ9cAPwLhbUBAAAAAAAAAA==",
+    "_self": "dbs/DJ9cAA==/colls/DJ9cAPwLhbU=/docs/DJ9cAPwLhbUBAAAAAAAAAA==/",
+    "_etag": "\"17005e22-0000-0800-0000-66a616490000\"",
+    "_attachments": "attachments/",
+    "_ts": 1722160713
+  },
+  {
+    "$kpi": "CAR",
+    "$calculated_val": "31.008646945853236",
+    "$benchmark": "12.0",
+    "$comparison": "Good",
+    "$difference": "19.008646945853236",
+    "id": "20558993-216a-4a95-849f-7b05843fc936",
+    "_rid": "DJ9cAPwLhbUCAAAAAAAAAA==",
+    "_self": "dbs/DJ9cAA==/colls/DJ9cAPwLhbU=/docs/DJ9cAPwLhbUCAAAAAAAAAA==/",
+    "_etag": "\"17005f22-0000-0800-0000-66a616490000\"",
+    "_attachments": "attachments/",
+    "_ts": 1722160713
+  },
+  {
+    "$kpi": "NPA Ratio",
+    "$calculated_val": "8.544366545634567",
+    "$benchmark": "2.0",
+    "$comparison": "Bad",
+    "$difference": "6.544366545634567",
+    "id": "cf23793c-504a-46e8-8b99-83d93bc8bb81",
+    "_rid": "DJ9cAPwLhbUDAAAAAAAAAA==",
+    "_self": "dbs/DJ9cAA==/colls/DJ9cAPwLhbU=/docs/DJ9cAPwLhbUDAAAAAAAAAA==/",
+    "_etag": "\"17006022-0000-0800-0000-66a616490000\"",
+    "_attachments": "attachments/",
+    "_ts": 1722160713
+  },
+  {
+    "$kpi": "Cost to Income Ratio",
+    "$calculated_val": "16.4976382350262",
+    "$benchmark": "50.0",
+    "$comparison": "Good",
+    "$difference": "-33.5023617649738",
+    "id": "4f6df995-969f-4b5c-8eaa-4f6cc4ac599c",
+    "_rid": "DJ9cAPwLhbUEAAAAAAAAAA==",
+    "_self": "dbs/DJ9cAA==/colls/DJ9cAPwLhbU=/docs/DJ9cAPwLhbUEAAAAAAAAAA==/",
+    "_etag": "\"17006122-0000-0800-0000-66a616490000\"",
+    "_attachments": "attachments/",
+    "_ts": 1722160713
+  },
+  {
+    "$kpi": "RoA",
+    "$calculated_val": "2.3971164907413436",
+    "$benchmark": "1.5",
+    "$comparison": "Good",
+    "$difference": "0.8971164907413436",
+    "id": "69922540-94b3-4ed5-859c-d698df483594",
+    "_rid": "DJ9cAPwLhbUFAAAAAAAAAA==",
+    "_self": "dbs/DJ9cAA==/colls/DJ9cAPwLhbU=/docs/DJ9cAPwLhbUFAAAAAAAAAA==/",
+    "_etag": "\"17006222-0000-0800-0000-66a616490000\"",
+    "_attachments": "attachments/",
+    "_ts": 1722160713
+  }
+]
