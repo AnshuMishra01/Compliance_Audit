@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Guidelines from '../../components/Guidelines';
 import WeeklyReport from '../../components/WeeklyReport';
@@ -8,6 +8,17 @@ import '../../index.css';
 
 function EmployeeDashboard() {
   const [activeCard, setActiveCard] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const cards = [
     {
@@ -42,12 +53,16 @@ function EmployeeDashboard() {
       };
     } else if (index === (activeCard + 1) % cards.length) {
       return {
-        transform: 'translateX(250px) scale(0.5) translateY(200px)',
+        transform: isMobile 
+          ? 'translateX(100px) scale(0.7) translateY(100px)'
+          : 'translateX(250px) scale(0.5) translateY(200px)',
         zIndex: 1,
       };
     } else if (index === (activeCard - 1 + cards.length) % cards.length) {
       return {
-        transform: 'translateX(250px) scale(0.5) translateY(-400px)',
+        transform: isMobile
+          ? 'translateX(100px) scale(0.7) translateY(-200px)'
+          : 'translateX(250px) scale(0.5) translateY(-400px)',
         zIndex: 1,
       };
     } else {
@@ -72,18 +87,18 @@ function EmployeeDashboard() {
           </h2>
         </div>
 
-        <div className="flex justify-between items-center mt-20 mb-8">
-          <div className="hero-container relative h-96 w-1/3 mt-10 flex items-center justify-center" style={{ perspective: '1000px' }}>
+        <div className="flex flex-col md:flex-row justify-between items-center mt-10 mb-8">
+          <div className={`hero-container relative ${isMobile ? 'h-64 w-64' : 'h-96 w-96'} mb-8 md:mb-5`} style={{ perspective: '1000px' }}>
             {cards.map((card, index) => (
               <motion.div
                 key={card.id}
-                className="absolute w-64 h-96 bg-gray-800 bg-opacity-30 backdrop-blur-md rounded-xl shadow-lg cursor-pointer transition-transform duration-500"
+                className={`absolute ${isMobile ? 'w-48 h-64 mt-20 mb-10' : 'w-64 h-96 mt-10 mb-10'} bg-gray-800 bg-opacity-30 backdrop-blur-md rounded-xl shadow-lg cursor-pointer transition-transform duration-500`}
                 style={getCardStyle(index)}
                 transition={{ duration: 0.5 }}
                 onClick={() => handleCardClick(index)}
               >
                 <div className="p-4">
-                  <h2 className="text-xl font-bold">{card.title}</h2>
+                  <h2 className={`${isMobile ? 'text-lg' : 'text-xl'} font-bold`}>{card.title}</h2>
                   {index === activeCard && <div className="mt-4">{card.component}</div>}
                 </div>
               </motion.div>
@@ -95,9 +110,9 @@ function EmployeeDashboard() {
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="w-1/3 p-4 bg-blue-800 bg-opacity-30 backdrop-blur-md rounded-xl shadow-lg"
+            className="w-full mt-10 md:w-1/3 p-4 bg-blue-800 bg-opacity-30 backdrop-blur-md rounded-xl shadow-lg"
           >
-            <h2 className="text-2xl font-bold mb-4">{cards[activeCard].title}</h2>
+            <h2 className="text-2xl font-bold  mb-4">{cards[activeCard].title}</h2>
             <p>{cards[activeCard].content}</p>
           </motion.div>
         </div>
@@ -107,4 +122,5 @@ function EmployeeDashboard() {
     </div>
   );
 }
+
 export default EmployeeDashboard;
