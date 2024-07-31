@@ -88,7 +88,7 @@ function EmployeeDashboard() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center mt-10 mb-8">
-          <div className={`hero-container relative ${isMobile ? 'h-64 w-64' : 'h-96 w-96'} mb-8 md:mb-5`} style={{ perspective: '1000px' }}>
+          <div className={`hero-container relative ${isMobile ? 'h-64 w-64' : 'h-96 w-96'} mb-8 mt-10 md:mb-5`} style={{ perspective: '1000px' }}>
             {cards.map((card, index) => (
               <motion.div
                 key={card.id}

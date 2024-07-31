@@ -66,12 +66,12 @@ const Login = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="mt-6 text-center"
             >
-              <p className="text-sm text-gray-600">
+              {/* <p className="text-sm text-gray-600">
                 Don&apos;t have an account?{" "}
                 <a href="#" className="text-orange-500 hover:underline">
                   Sign Up here
                 </a>
-              </p>
+              </p> */}
             </motion.div>
           </div>
         </motion.div>
