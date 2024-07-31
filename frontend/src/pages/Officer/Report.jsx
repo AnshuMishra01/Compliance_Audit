@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Modal from "./reportModel";
 import { motion } from "framer-motion";
 import html2canvas from "html2canvas";

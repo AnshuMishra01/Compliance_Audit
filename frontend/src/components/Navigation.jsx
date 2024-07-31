@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getUserType } from "../utils/auth";
 import logo from "../assets/Bank_of_Baroda_logo_orange_background.png";
@@ -31,11 +31,18 @@ const Navigation = () => {
             </div>
           </div>
           <div className="md:hidden">
-            <button onClick={toggleMenu} className="text-2xl focus:outline-none">
+            <button
+              onClick={toggleMenu}
+              className="text-2xl focus:outline-none"
+            >
               {isOpen ? <FaTimes /> : <FaBars />}
             </button>
           </div>
-          <div className={`flex-col md:flex md:flex-row items-center md:space-x-6 space-y-6 md:space-y-0 mt-4 md:mt-0 ${isOpen ? "flex" : "hidden"}`}>
+          <div
+            className={`flex-col md:flex md:flex-row items-center md:space-x-6 space-y-6 md:space-y-0 mt-4 md:mt-0 ${
+              isOpen ? "flex" : "hidden"
+            }`}
+          >
             {userType === "officer" ? (
               <>
                 <Link to="/officer/dashboard" className="neon-hover font-sans">

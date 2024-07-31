@@ -1,12 +1,12 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import Modal from './Modal';
-import guidelineSummaries from '../../../../backend/guideline_summ.json'; // Import the JSON file
+import React, { useState, useMemo, useEffect } from "react";
+import { motion } from "framer-motion";
+import Modal from "./Modal";
+import guidelineSummaries from "../../../../backend/guideline_summ.json"; // Import the JSON file
 
 function CashierGuidelines() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
-  const [filterText, setFilterText] = useState('');
+  const [filterText, setFilterText] = useState("");
   const [guidelines, setGuidelines] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ function CashierGuidelines() {
   }, []);
 
   const filteredGuidelines = useMemo(() => {
-    return guidelines.filter(guideline =>
+    return guidelines.filter((guideline) =>
       guideline.$department.toLowerCase().includes(filterText.toLowerCase())
     );
   }, [filterText, guidelines]);
@@ -29,10 +29,10 @@ function CashierGuidelines() {
   };
 
   return (
-    <div className=" fixed bg-gray-900 min-h-screen p-8 mt-10">
+    <div className=" fixed bg-gray-900 min-h-screen p-8 mt-10 w-full">
       <div className="max-w-6xl mx-auto bg-gray-800 rounded-lg shadow-lg overflow-hidden">
         <div className="p-6">
-          <motion.h1 
+          <motion.h1
             className="text-3xl font-bold text-white mb-6"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -40,9 +40,9 @@ function CashierGuidelines() {
           >
             All Guidelines
           </motion.h1>
-          
+
           <div className="flex justify-between items-center mb-4">
-            <motion.h2 
+            <motion.h2
               className="text-lg font-semibold text-white"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -50,16 +50,16 @@ function CashierGuidelines() {
             >
               Guidelines
             </motion.h2>
-            <input 
-              type="text" 
-              placeholder="Filter by Deparment" 
+            <input
+              type="text"
+              placeholder="Filter by Deparment"
               className="px-3 py-1 border rounded-md"
               value={filterText}
               onChange={(e) => setFilterText(e.target.value)}
             />
           </div>
-          
-          <motion.div 
+
+          <motion.div
             className="overflow-x-auto"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -77,24 +77,32 @@ function CashierGuidelines() {
               </thead>
               <tbody>
                 {filteredGuidelines.map((guideline) => (
-                  <motion.tr 
-                    key={guideline.id} 
+                  <motion.tr
+                    key={guideline.id}
                     className="bg-gray-700 hover:bg-gray-600"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <td className="px-4 py-2 text-gray-200">{guideline.$guideline_name}</td>
-                    <td className="px-4 py-2 text-gray-400">{guideline.$passedon}</td>
-                    <td className="px-4 py-2 text-gray-400">{guideline.$department}</td>
+                    <td className="px-4 py-2 text-gray-200">
+                      {guideline.$guideline_name}
+                    </td>
+                    <td className="px-4 py-2 text-gray-400">
+                      {guideline.$passedon}
+                    </td>
+                    <td className="px-4 py-2 text-gray-400">
+                      {guideline.$department}
+                    </td>
                     <td className="px-4 py-2">
-                      <button 
+                      <button
                         className="text-blue-400 hover:underline"
                         onClick={() => openModal(guideline)}
                       >
                         Click/Open
                       </button>
                     </td>
-                    <td className="px-4 py-2 text-gray-400">{guideline.$implementation}</td>
+                    <td className="px-4 py-2 text-gray-400">
+                      {guideline.$implementation}
+                    </td>
                   </motion.tr>
                 ))}
               </tbody>
@@ -103,11 +111,7 @@ function CashierGuidelines() {
         </div>
       </div>
 
-      <Modal 
-        isOpen={isModalOpen} 
-        onClose={closeModal} 
-        content={modalContent}
-      />
+      <Modal isOpen={isModalOpen} onClose={closeModal} content={modalContent} />
     </div>
   );
 }
