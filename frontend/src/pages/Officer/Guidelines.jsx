@@ -29,7 +29,7 @@ function CashierGuidelines() {
   };
 
   return (
-    <div className="bg-gray-900 min-h-screen p-8 mt-10">
+    <div className=" fixed bg-gray-900 min-h-screen p-8 mt-10">
       <div className="max-w-6xl mx-auto bg-gray-800 rounded-lg shadow-lg overflow-hidden">
         <div className="p-6">
           <motion.h1 
